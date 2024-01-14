@@ -1,0 +1,24 @@
+{
+  "name": "simplified-distributed-exchange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "grape1": "grape --dp 20001 --aph 30001 --bn '127.0.0.1:20002'",
+    "grape2": "grape --dp 20002 --aph 40001 --bn '127.0.0.1:20001'",
+    "server": "node server",
+    "client": "node client",
+    "start": "concurrently --kill-others \"npm run grape1\" \"npm run grape2\" \"npm run server\" \"sleep 2 && npm run client\"",
+    "test": "jest"
+  },
+  "author": "Eugene Glova",
+  "license": "ISC",
+  "dependencies": {
+    "grenache-nodejs-http": "^0.7.13",
+    "grenache-nodejs-link": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0"
+  }
+}
